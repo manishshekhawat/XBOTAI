@@ -1,12 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import botLogo from "../assets/botAi-logo.png";
 import edit from "../assets/edit.png";
 
 export const SideBar = ({ setSearch,setChat }) => {
-  const navigate = useNavigate();
+  
 
   const handleButton = () => {
-    navigate("/");
+    
     setSearch("");
     setChat({
       botChat: [],
@@ -34,7 +34,8 @@ export const SideBar = ({ setSearch,setChat }) => {
           className="font-semibold texr-sm sm:text-base cursor-pointer"
           onClick={handleButton}
         >
-          New Chat
+        <a href="/">New Chat</a>
+          
         </button>
         
           <div className="h-6 w-6 overflow-hidden rounded-full flex-shrink-0">

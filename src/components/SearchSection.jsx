@@ -67,6 +67,7 @@ if (!newBotMsg || !newUserMsg) {
     >
       <input
         type="text"
+        placeholder='Message Bot AI...'
         className="w-[848px] h-10 bg-white p-2"
         value={search}
         onChange={handleInput}
