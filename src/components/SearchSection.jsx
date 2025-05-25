@@ -1,7 +1,7 @@
 import { useState } from "react";
 import data from "../sampleData.json";
 
-export const SearchSection = ({ search, setSearch, setChat, setShowFeedback }) => {
+export const SearchSection = ({ search, setSearch, chat, setChat, setShowFeedback,chatHistory,setChatHistory }) => {
   const [lastResponse, setLastResponse] = useState(null); 
 
   const defaultResponse = "Sorry, Did not understand your query!";
@@ -36,11 +36,29 @@ export const SearchSection = ({ search, setSearch, setChat, setShowFeedback }) =
   };
 
   const handleSave = () => {
-    console.log(lastResponse)
-    if (lastResponse) {
-      setShowFeedback(true);
-    }
+  const newBotMsg = chat.botChat.at(-1);
+const newUserMsg = chat.userChat.at(-1);
+
+if (!newBotMsg || !newUserMsg) {
+  alert("No conversation to save!");
+  return;
+}
+
+  const existingHistory=JSON.parse(localStorage.getItem("chatHistory")) || {
+    botChatHistory: [],
+    userChatHistory: [],
+  }
+
+  const updatedHistory = {
+    botChatHistory: [...existingHistory.botChatHistory, newBotMsg],
+    userChatHistory: [...existingHistory.userChatHistory, newUserMsg],
   };
+
+  setChatHistory(updatedHistory);
+  localStorage.setItem("chatHistory", JSON.stringify(updatedHistory));
+  setShowFeedback(true);
+};
+
 
   return (
     <form

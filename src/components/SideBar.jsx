@@ -1,8 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import botLogo from "../assets/botAi-logo.png";
 import edit from "../assets/edit.png";
 
-export const SideBar = () => {
+export const SideBar = ({ setSearch,setChat }) => {
+  const navigate = useNavigate();
+
+  const handleButton = () => {
+    navigate("/");
+    setSearch("");
+    setChat({
+      botChat: [],
+    userChat: [],
+    botChatTime: [],
+    userChatTime: [],
+    })
+  };
   return (
     <>
       <div
@@ -17,12 +29,17 @@ export const SideBar = () => {
           />
         </div>
 
-        <p className="font-semibold texr-sm sm:text-base">New Chat</p>
-        <Link to="/">
+        <button
+          type="button"
+          className="font-semibold texr-sm sm:text-base cursor-pointer"
+          onClick={handleButton}
+        >
+          New Chat
+        </button>
+        
           <div className="h-6 w-6 overflow-hidden rounded-full flex-shrink-0">
-          <img src={edit} alt="new" className="w-full h-full object-cover" />
-        </div>
-        </Link>
+            <img src={edit} alt="new" className="w-full h-full object-cover" />
+          </div>
         
       </div>
 

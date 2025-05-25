@@ -17,6 +17,11 @@ export const Home = ({ showHistory = false }) => {
   const [feedback, setFeedback] = useState("");
   const [showFeedback, setShowFeedback] = useState(false);
 
+  const [chatHistory,setChatHistory]=useState({
+    botChatHistory: [],
+    userChatHistory: [],
+  })
+
   useEffect(() => {
     console.log(chat);
   }, [chat]);
@@ -28,7 +33,7 @@ export const Home = ({ showHistory = false }) => {
   return (
     <div className="grid grid-cols-12 w-full h-full ">
       <div className=" hidden md:block md:col-span-2 ">
-        <SideBar handleChatHistoryButton={handleChatHistoryButton} />
+        <SideBar handleChatHistoryButton={handleChatHistoryButton} setSearch={setSearch} setChat={setChat}/>
       </div>
 
       <div className="md:col-span-10 col-span-12 w-full h-full bg-[#F6F2FC] relative pb-28">
@@ -54,8 +59,11 @@ export const Home = ({ showHistory = false }) => {
           <SearchSection
             search={search}
             setSearch={setSearch}
+            chat={chat}
             setChat={setChat}
             setShowFeedback={setShowFeedback}
+            chatHistory={chatHistory}
+            setChatHistory={setChatHistory}
           />
         </div>
       </div>

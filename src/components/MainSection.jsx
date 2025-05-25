@@ -16,7 +16,7 @@ export const MainSection=()=>{
     return(
         <>
             <h1 className="font-bold text-xl m-4">
-                      <span className="md:hidden">___</span>BOT AI
+                      <span className="md:hidden">___</span>Bot AI
                     </h1>
                     <div className="flex flex-col items-center gap-1 mt-20">
                       <h1 className="font-bold text-xl">How Can I Help You Today?</h1>
