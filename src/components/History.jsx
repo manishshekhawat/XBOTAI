@@ -44,7 +44,7 @@ export const History = () => {
                   />
                 </div>
                 <div className="flex flex-col justify-center gap-0.5 ">
-                  <p className="font-semibold text-md">Soul AI</p>
+                  <span className="font-semibold text-md">Soul AI</span>
                   <p className="text-md">{chatHistory.botChatHistory[i]}</p>
                   <div className="flex justify-start items-center gap-2 mt-3">
                     <p className="text-xs">21:00</p>

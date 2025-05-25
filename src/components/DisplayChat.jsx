@@ -32,7 +32,7 @@ export const DisplayChat = ({ chat }) => {
                 />
               </div>
               <div className="flex flex-col justify-center gap-0.5 ">
-                <p className="font-semibold text-md">Soul AI</p>
+                <span className="font-semibold text-md">Soul AI</span>
                 <p className="text-md">{chat.botChat[i]}</p>
                 <div className="flex justify-start items-center gap-2 mt-3">
                   <p className="text-xs">{chat.botChatTime[i]}</p>

@@ -17,8 +17,9 @@ export const SideBar = ({ setSearch,setChat }) => {
   };
   return (
     <>
+    <div className="flex flex-col w-full">
       <div
-        className="flex justify-center items-center gap-3 p-3  w-full h-[50px]"
+        className="flex justify-center items-center gap-5   w-full h-[50px]"
         style={{ backgroundColor: "#D7C7F4" }}
       >
         <div className="h-9 w-9 overflow-hidden rounded-full flex-shrink-0">
@@ -49,6 +50,8 @@ export const SideBar = ({ setSearch,setChat }) => {
           Past Conversations
         </div>
       </Link>
+    </div>
+      
     </>
   );
 };

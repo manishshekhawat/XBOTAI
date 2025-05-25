@@ -16,11 +16,10 @@ export const Home = ({ showHistory = false }) => {
   });
   const [feedback, setFeedback] = useState("");
   const [showFeedback, setShowFeedback] = useState(false);
-
-  const [chatHistory,setChatHistory]=useState({
+  const [chatHistory, setChatHistory] = useState({
     botChatHistory: [],
     userChatHistory: [],
-  })
+  });
 
   useEffect(() => {
     console.log(chat);
@@ -31,14 +30,21 @@ export const Home = ({ showHistory = false }) => {
   };
 
   return (
-    <div className="grid grid-cols-12 w-full h-full ">
-      <div className=" hidden md:block md:col-span-2 ">
-        <SideBar handleChatHistoryButton={handleChatHistoryButton} setSearch={setSearch} setChat={setChat}/>
+    <div className="w-full h-full">
+      {/* Sidebar (Fixed Left) */}
+      <div className="hidden md:flex fixed top-0 left-0 h-full w-1/6 bg-white shadow-md z-50">
+        <SideBar
+          handleChatHistoryButton={handleChatHistoryButton}
+          setSearch={setSearch}
+          setChat={setChat}
+        />
       </div>
 
-      <div className="md:col-span-10 col-span-12 w-full h-full bg-[#F6F2FC] relative pb-28">
+      
+      <div className="md:ml-[16.66%] md:w-5/6 w-full h-full bg-[#F6F2FC] relative pb-28 p-2">
+        
         {showFeedback && (
-          <div className="flex justify-center items-center h-screen z-1000">
+          <div className="flex justify-center items-center h-screen z-50 fixed inset-0 bg-black bg-opacity-30">
             <FeedBack
               feedback={feedback}
               setFeedback={setFeedback}
@@ -47,6 +53,7 @@ export const Home = ({ showHistory = false }) => {
           </div>
         )}
 
+        {/* Chat or Main Display */}
         {showHistory ? (
           <History chat={chat} />
         ) : chat.userChat.length > 0 ? (
@@ -55,7 +62,8 @@ export const Home = ({ showHistory = false }) => {
           <MainSection />
         )}
 
-        <div className="fixed left-0 bottom-0 w-full">
+        {/* Fixed Bottom Search Section */}
+        <div className="fixed left-0 bottom-0 w-full z-50">
           <SearchSection
             search={search}
             setSearch={setSearch}
